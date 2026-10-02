@@ -1,0 +1,14 @@
+# One-click deploy on Render (https://render.com): New > Blueprint > pick this repo.
+services:
+  - type: web
+    name: apa-formatter
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false   # paste your key in the Render dashboard
+      - key: ANALYZE_PER_HOUR
+        value: "20"
+      - key: RENDER_PER_HOUR
+        value: "60"
